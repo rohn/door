@@ -10,13 +10,7 @@ var p = new push({
     user: process.env['PUSHOVER_USER'],
     token: process.env['PUSHOVER_TOKEN']
 });
-
-var msg = {
-  message: 'The basement door is open',
-  title: 'Basement Door',
-  sound: 'incoming',
-  priority: 1
-};
+var msg = config.get('pushover');
 
 var sendMessageTimeout;
 
