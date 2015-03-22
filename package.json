@@ -1,0 +1,17 @@
+{
+  "name": "basement-doors",
+  "version": "0.0.0",
+  "description": "Basement door monitor",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Rohn <rohn@intensiveporpoises.com>",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^1.12.0",
+    "onoff": "^1.0.2",
+    "request": "^2.53.0",
+    "pushover-notifications": "0.2.2"
+  }
+}
