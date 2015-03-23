@@ -2,7 +2,6 @@ var request = require('request');
 var config = require('config');
 var push = require( 'pushover-notifications' );
 var Door = require('./door');
-var door = new Door();
 
 var payload = {};
 
@@ -14,7 +13,7 @@ var msg = config.get('pushover');
 
 var sendMessageTimeout;
 
-door.on('open', function() {
+var opendoor = function() {
   console.log('Door opened');
   payload.state = 'open';
 
@@ -25,10 +24,14 @@ door.on('open', function() {
       }
     });
   }, 5000);
-});
+};
 
-door.on('close', function() {
+var closedoor = function() {
   console.log('Door closed');
   payload.state = 'closed';
   clearTimeout(sendMessageTimeout);
-});
+};
+
+var door = new Door();
+door.on('open', opendoor)
+door.on('close', closedoor);
