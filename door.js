@@ -3,17 +3,13 @@ var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 var config = require('config');
 
-console.log('setting up');
-
-var Door = module.exports = function() {
+var Door = module.exports = function(sensorNumber, whichDoor) {
   EventEmitter.call(this);
-  this.isOpen = false;
-  var pins = config.get('pins');
 
-  var sensor = new Gpio(pins.sensor, 'in', 'both');
+  var sensor = new Gpio(sensorNumber, 'in', 'both');
 
   var update = function(err, value) {
-    this.emit(value ? 'close' : 'open', 'basement')
+    this.emit(value ? 'close' : 'open', whichDoor)
   }.bind(this);
 
   sensor.read(update);

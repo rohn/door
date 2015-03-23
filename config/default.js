@@ -1,13 +1,13 @@
 module.exports = {
-  doorID: 1,
 
-  pins: {
-    sensor: 18
-  },
+  pins: [
+    {"sensor": 18, "which": 'basement'},
+    {"sensor": 16, "which": 'garage'}
+  ],
 
   pushover: {
     message: 'The basement door is open',
-    title: 'Basement Door',
+    title: 'Door Warning',
     sound: 'incoming',
     priority: 1
   }
