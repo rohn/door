@@ -13,8 +13,8 @@ var msg = config.get('pushover');
 
 var sendMessageTimeout;
 
-var opendoor = function() {
-  console.log('Door opened');
+var opendoor = function(whichDoor) {
+  console.log('Door opened: ' + whichDoor);
   payload.state = 'open';
 
   sendMessageTimeout = setTimeout(function() {
@@ -26,8 +26,8 @@ var opendoor = function() {
   }, 5000);
 };
 
-var closedoor = function() {
-  console.log('Door closed');
+var closedoor = function(whichDoor) {
+  console.log('Door closed: ' + whichDoor);
   payload.state = 'closed';
   clearTimeout(sendMessageTimeout);
 };

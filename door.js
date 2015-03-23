@@ -13,7 +13,7 @@ var Door = module.exports = function() {
   var sensor = new Gpio(pins.sensor, 'in', 'both');
 
   var update = function(err, value) {
-    this.emit(value ? 'close' : 'open')
+    this.emit(value ? 'close' : 'open', 'basement')
   }.bind(this);
 
   sensor.read(update);
